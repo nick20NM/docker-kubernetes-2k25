@@ -1,0 +1,134 @@
+kubernetes commands
+
+minikube version
+minikube start --driver=docker
+minukube status
+minikube status
+kubectl cluster-info
+kubectl get node
+minikube docker-env
+@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i
+docker images
+cd C:\Users\Nick\Desktop\sts_new_2k25\sts_new_workspace\demo
+ls
+docker build -t spring-boot-k8s-demo:1.0 .
+docker images
+kubectl create deployment spring-boot-k8s-deployment --image=spring-boot-k8s-demo:1.0 --port=8080
+kubectl get deployment
+kubectl describe deployment spring-boot-k8s-deployment
+kubectl get pods
+kubectl logs spring-boot-k8s-deployment-5b954d797d-cp8xj
+kubectl get deployments
+kubectl expose deployment spring-boot-k8s-deployment --type=NodePort
+kubectl get service
+minikube service spring-boot-k8s-deployment --url
+minikube dashboard
+kubectl get service
+kubectl delete service spring-boot-k8s-deployment
+kubectl service
+kubectl get service
+kubectl get deployments
+kubectl delete deployment spring-boot-k8s-deployment
+kubectl get pods
+kubectl get svc
+kubectl get service
+kubectl get deployments
+kubectl get nodes
+minikube stop
+kubectl get nodes
+minikube delete
+history
+doskey /history
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 502  ls -l
+  503  pwd
+  504  whoami
+  505  minikube version
+  506  minikube start
+  507  minikube status
+  508  eval $(minikube docker-env)
+  509  docker images
+  510  cd /c/Users/Nick/Desktop/sts_new_2k25/sts_new_workspace/demo
+  511  ls
+  512  ls -l
+  513  docker build -t spring-boot-k8s-app:1.0 .
+  514  docker images
+  515  ls -l
+  516  kubectl apply -f deployment.yaml
+  517  kubectl get deployments
+  518  kubectl get deployment
+  519  kubectl get deployments
+  520  clear
+  521  kubectl get deployments
+  522  kubectl get pods
+  523  kubectl logs spring-boot-k8s-8d86ffdc4-c5jvn
+  524  kubectl logs spring-boot-k8s-8d86ffdc4-lnpm4
+  525  kubectl logs spring-boot-k8s-8d86ffdc4-slc4x
+  526  clear
+  527  ls
+  528  kubectl apply -f service.yaml
+  529  kubectl get svc
+  530  kubectl get nodes
+  531  kubectl get nodes -o wide
+  532  minikube ip
+  533  kubectl get pods
+  534  kubectl logs spring-boot-k8s-8d86ffdc4-c5jvn
+  535  minikube status
+  536  minukube stop
+  537  minikube stop
+  538  minikube status
+  539  minikube start
+  540  minikube status
+  541  kubectl get nodes
+  542  kubectl get pods
+  543  kubectl get deployments
+  544  kubectl get svc
+  545  kubectl get nodes -o wide
+  546  history
+  
+  
+  
+--------------------------------------------------------------------------------------------------------
+  
+  ✅ Step 4: Check Minikube (If Using Minikube)
+If you're running Kubernetes on Minikube, use:
+
+sh
+Copy
+Edit
+minikube service springboot-k8s-svc --url
+Instead of:
+
+sh
+Copy
+Edit
+http://192.168.49.2:30460
+Minikube often runs services inside a VM, so the external NodePort IP (192.168.49.2) may not be directly reachable.
+
+If Minikube's service command works, try:
+
+sh
+Copy
+Edit
+minikube tunnel
+and retry accessing http://localhost:30460.
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+3️⃣ Port Forwarding (Another Option)
+If you prefer manual port forwarding:
+
+sh
+Copy
+Edit
+kubectl port-forward svc/springboot-k8s-svc 8080:8080
+Then access:
+
+arduino
+Copy
+Edit
+http://localhost:8080
