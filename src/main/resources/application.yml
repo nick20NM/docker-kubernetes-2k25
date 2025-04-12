@@ -1,0 +1,17 @@
+#spring.application.name=docker_kubernete
+
+spring:
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useSSL=false
+    url: jdbc:mysql://localhost:3306/test123?createDatabaseIfNotExist=true&useSSL=false
+    username: root
+    password: root
+#    hikari:
+#      initialization-fail-timeout: 0
+  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
